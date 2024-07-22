@@ -45,7 +45,7 @@ class YahooFinanceExporter():
 
                 if action in ["Market buy", "Limit buy", "Stop limit buy"]:
                     quantity = float(quantity)
-                elif action in ["Market sell", "Limit sell", "Stop limit sell"]:
+                elif action in ["Market sell", "Limit sell", "Stop limit sell", "Stop sell"]:
                     quantity = -float(quantity)
                 else:
                     # Probably one of dividend, deposit or withdraw
@@ -63,15 +63,24 @@ class YahooFinanceExporter():
                 else:
                     print("\t{} needs manual mapping!".format(symbol))
                     symbolErrors = True
-
-                writer.writerow({
+                if symbol == "TSLA":
+                    writer.writerow({
                     "Symbol": symbol,
                     "Date": tradeDate.strftime("%Y/%m/%d"),
                     "Time": tradeDate.strftime("%H:%M"),
                     "Trade Date": tradeDate.strftime("%Y%m%d"),
-                    "Purchase Price": price,
-                    "Quantity": quantity
-                })
+                    "Purchase Price": float(price)/3,
+                    "Quantity": float(quantity)*3
+                    })
+                else:
+                    writer.writerow({
+                        "Symbol": symbol,
+                        "Date": tradeDate.strftime("%Y/%m/%d"),
+                        "Time": tradeDate.strftime("%H:%M"),
+                        "Trade Date": tradeDate.strftime("%Y%m%d"),
+                        "Purchase Price": price,
+                        "Quantity": quantity
+                    })
             print("\tWritten to: {}".format(outputpath))
 
             if symbolErrors:

@@ -10,6 +10,16 @@ OutputPath=output/yahoo-finance.csv
 # tickers. Some need a manual mapping - especially for 
 # European equities. The format is
 # Trading212Ticker=YahooFinanceTicker
-BTCE=DE000A27Z304.SG
-WDI=WDI.DE
-ECAR=ECAR.L
+VUSA=VUSA.L
+VUSD=VUSD.L
+VUAA=VUAA.L
+IUHC=IUHC.L
+DHER=DHER.DE
+ZAL=ZAL.DE
+LHA=LHA.DE
+DTE=DTE.DE
+CSP1=CSP1.L
+IUIT=IUIT.L
+IITU=IITU.L
+VUSC=VUSC.L
+IQQH=IQQH.DE
